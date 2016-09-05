@@ -126,7 +126,10 @@ Expressao.prototype.and = function(){
 
 Expressao.prototype.execute = function(){
     this.operadoresCondicionais().forEach(function(op){
-        op.execute();
+		if(op.constructor == Expressao)
+			op.construir();
+		else
+            op.execute();
     });
 
     return this;
@@ -190,6 +193,11 @@ Array.prototype.where = function(){
     return self.expressao;
 };
 
+function ClasseTeste(id){
+	this.id = ko.observable(id);
+}
+
 define(['expressao'],function(){
     return Expressao;
 });
+
