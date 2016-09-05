@@ -4,10 +4,10 @@ var shim={};
 var pathsVendors = {
     //vendors references
     'domReady': '/Scripts/vendor/domReady',
-    'jquery':'/scripts/jquery-3.1.0',
-    'knockout':'/scripts/knockout-3.4.0',
-    'knockout-validation':'/scripts/knockout.validation',
-    'bootstrap':'/scripts/bootstrap',
+    //'jquery':'/scripts/jquery-3.1.0',
+    //'knockout':'/scripts/knockout-3.4.0',
+    //'knockout-validation':'/scripts/knockout.validation',
+    //'bootstrap':'/scripts/bootstrap',
     'text': '/scripts/vendor/text'
 };
 
@@ -34,6 +34,7 @@ var shimVendors = {
 
 var pathsBusiness =  {
     //business references
+    'expressao': '/Scripts/expressao',
     'modal-component': '/Scripts/components/modal-component',
     'sub-component': '/Scripts/components/sub-component',
     'sub-component-tmpl': '/Content/templates/sub-component-tmpl.html',
@@ -49,7 +50,7 @@ function mergeProperties (owner, array){
 mergeProperties(paths, pathsVendors)
 mergeProperties(paths, pathsBusiness);
 
-mergeProperties(shim, shimVendors);
+//mergeProperties(shim, shimVendors);
 
 for( var p in paths){
     paths[p] = uriVirtualPath + paths[p];
@@ -65,10 +66,10 @@ require.config({
 
 var domReady = function (callback) {
     require(['!./domReady'], function (domReady, tmpl) {
-        require(['knockout','jquery','bootstrap'],function(knockout,jquery){
-            ko = knockout;
+        //require(['bundle-vendors'],function(bundle){
+            //ko = knockout;
             domReady(callback);
-        });
+        //});
     });
 }
 
